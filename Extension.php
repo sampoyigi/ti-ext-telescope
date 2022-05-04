@@ -18,7 +18,7 @@ class Extension extends BaseExtension
             __DIR__.'/config/telescope.php', 'telescope'
         );
 
-        app()->register(\Illuminate\Auth\AuthServiceProvider::class);
+//        app()->register(\Illuminate\Auth\AuthServiceProvider::class);
 
         $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
 
