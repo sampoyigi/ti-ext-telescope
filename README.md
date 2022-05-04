@@ -1,30 +1,15 @@
-:package_description
+Integrates the [Laravel Telescope](https://github.com/laravel/telescope) package into TastyIgniter.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![Tests](https://github.com/:vendor_slug/:package_slug/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/:vendor_slug/:package_slug/actions/workflows/run-tests.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-<!--delete-->
----
-This package can be used as to scaffold a TastyIgniter extension. Follow these steps to get started:
-
-- Press the `Use template` button at the top of this repo to create a new repo with the contents of this skeleton
-- Run `php ./configure.php` to run a script that will replace all placeholders throughout all the files
-- Have fun creating your extension.
-
-Inspired by [Spatie's PHP Package Skeleton](https://github.com/spatie/package-skeleton-php)
----
-<!--/delete-->
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/sampoyigi/ttelescope.svg?style=flat-square)](https://packagist.org/packages/sampoyigi/ttelescope)
+[![Tests](https://github.com/sampoyigi/ttelescope/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/sampoyigi/ttelescope/actions/workflows/run-tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/sampoyigi/ttelescope.svg?style=flat-square)](https://packagist.org/packages/sampoyigi/ttelescope)
 
 ### Installation
 
-You can install the extension via composer:
+Clone [the repository](https://github.com/sampoyigi/ti-ext-telescope) into **extensions/sampoyigi/telescope** and then
+run `composer update` from your project root in order to pull in the dependencies.
 
-```bash
-composer require :vendor_slug/:package_slug
-```
-
-### Usage
+To install it with Composer, run `composer require sampoyigi/ti-ext-telescope` from your project root.
 
 ### Testing
 
@@ -47,7 +32,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ### Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Sam Poyigi](https://github.com/sampoyigi)
 - [All Contributors](../../contributors)
 
 ### License
