@@ -153,7 +153,7 @@ return [
 
         Watchers\ModelWatcher::class => [
             'enabled' => env('TELESCOPE_MODEL_WATCHER', TRUE),
-            'events' => ['eloquent.*'],
+            'events' => ['eloquent.*', 'model.*'],
             'hydrations' => TRUE,
         ],
 
