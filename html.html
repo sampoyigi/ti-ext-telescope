@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="Content-type" content="text/html; charset=utf-8" type="equiv">
+    <meta name="X-UA-Compatible" content="IE=edge" type="equiv">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" type="name">
+
+    <meta name="csrf-token" content="FAbzZ09Byv8e5BxwyQbDg1Tt9DXTPXUUmnxf5i5G">
+    <link rel="shortcut icon" type="image/x-icon" href="https://tasty.wip/vendor/igniter/admin/images/favicon.svg">
+
+    <title>Menus - TastyIgniter</title>
+    <link rel="stylesheet" type="text/css" href="html_files/80daa0f4bd943487b9fa6a7e3088f745-1653222497.css">
+
+    <style>.swal2-popup.swal2-toast {box-sizing: border-box;grid-column: 1/4 !important;grid-row: 1/4 !important;grid-template-columns:1fr 99fr 1fr;padding: 1em;overflow-y: hidden;background: #FFF;box-shadow: 0 0 1px hsla(0deg, 0%, 0%, .075), 0 1px 2px hsla(0deg, 0%, 0%, .075), 1px 2px 4px hsla(0deg, 0%, 0%, .075), 1px 3px 8px hsla(0deg, 0%, 0%, .075), 2px 4px 16px hsla(0deg, 0%, 0%, .075);pointer-events: all}
+
+    .swal2-popup.swal2-toast > * {grid-column: 2}
+
+    .swal2-popup.swal2-toast .swal2-title {margin: .5em 1em;padding: 0;font-size: 1em;text-align: initial}
+
+    .swal2-popup.swal2-toast .swal2-loading {justify-content: center}
+
+    .swal2-popup.swal2-toast .swal2-input {height: 2em;margin: .5em;font-size: 1em}
+
+    .swal2-popup.swal2-toast .swal2-validation-message {font-size: 1em}
+
+    .swal2-popup.swal2-toast .swal2-footer {margin: .5em 0 0;padding: .5em 0 0;font-size: .8em}
+
+    .swal2-popup.swal2-toast .swal2-close {grid-column: 3/3;grid-row: 1/99;align-self: center;width: .8em;height: .8em;margin: 0;font-size: 2em}
+
+    .swal2-popup.swal2-toast .swal2-html-container {margin: .5em 1em;padding: 0;font-size: 1em;text-align: initial}
+
+    .swal2-popup.swal2-toast .swal2-html-container:empty {padding: 0}
+
+    .swal2-popup.swal2-toast .swal2-loader {grid-column: 1;grid-row: 1/99;align-self: center;width: 2em;height: 2em;margin: .25em}
+
+    .swal2-popup.swal2-toast .swal2-icon {grid-column: 1;grid-row: 1/99;align-self: center;width: 2em;min-width: 2em;height: 2em;margin: 0 .5em 0 0}
+
+    .swal2-popup.swal2-toast .swal2-icon .swal2-icon-content {display: flex;align-items: center;font-size: 1.8em;font-weight: 700}
+
+    .swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring {width: 2em;height: 2em}
+
+    .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line] {top: .875em;width: 1.375em}
+
+    .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left] {left: .3125em}
+
+    .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right] {right: .3125em}
+
+    .swal2-popup.swal2-toast .swal2-actions {justify-content: flex-start;height: auto;margin: 0;margin-top: .5em;padding: 0 .5em}
+
+    .swal2-popup.swal2-toast .swal2-styled {margin: .25em .5em;padding: .4em .6em;font-size: 1em}
+
+    .swal2-popup.swal2-toast .swal2-success {border-color: #A5DC86}
+
+    .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line] {position: absolute;width: 1.6em;height: 3em;transform: rotate(45deg);border-radius: 50%}
+
+    .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left] {top: -.8em;left: -.5em;transform: rotate(-45deg);transform-origin: 2em 2em;border-radius: 4em 0 0 4em}
+
+    .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right] {top: -.25em;left: .9375em;transform-origin: 0 1.5em;border-radius: 0 4em 4em 0}
+
+    .swal2-popup.swal2-toast .swal2-success .swal2-success-ring {width: 2em;height: 2em}
+
+    .swal2-popup.swal2-toast .swal2-success .swal2-success-fix {top: 0;left: .4375em;width: .4375em;height: 2.6875em}
+
+    .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line] {height: .3125em}
+
+    .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip] {top: 1.125em;left: .1875em;width: .75em}
+
+    .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long] {top: .9375em;right: .1875em;width: 1.375em}
+
+    .swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip {-webkit-animation: swal2-toast-animate-success-line-tip .75s;animation: swal2-toast-animate-success-line-tip .75s}
+
+    .swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long {-webkit-animation: swal2-toast-animate-success-line-long .75s;animation: swal2-toast-animate-success-line-long .75s}
+
+    .swal2-popup.swal2-toast.swal2-show {-webkit-animation: swal2-toast-show .5s;animation: swal2-toast-show .5s}
+
+    .swal2-popup.swal2-toast.swal2-hide {-webkit-animation: swal2-toast-hide .1s forwards;animation: swal2-toast-hide .1s forwards}
+
+    .swal2-container {display: grid;position: fixed;z-index: 1060;top: 0;right: 0;bottom: 0;left: 0;box-sizing: border-box;grid-template-areas:"top-start     top            top-end" "center-start  center         center-end" "bottom-start  bottom-center  bottom-end";grid-template-rows:minmax(-webkit-min-content, auto) minmax(-webkit-min-content, auto) minmax(-webkit-min-content, auto);grid-template-rows:minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);height: 100%;padding: .625em;overflow-x: hidden;transition: background-color .1s;-webkit-overflow-scrolling: touch}
+
+    .swal2-container.swal2-backdrop-show, .swal2-container.swal2-noanimation {background: rgba(0, 0, 0, .4)}
+
+    .swal2-container.swal2-backdrop-hide {background: 0 0 !important}
+
+    .swal2-container.swal2-bottom-start, .swal2-container.swal2-center-start, .swal2-container.swal2-top-start {grid-template-columns:minmax(0, 1fr) auto auto}
+
+    .swal2-container.swal2-bottom, .swal2-container.swal2-center, .swal2-container.swal2-top {grid-template-columns:auto minmax(0, 1fr) auto}
+
+    .swal2-container.swal2-bottom-end, .swal2-container.swal2-center-end, .swal2-container.swal2-top-end {grid-template-columns:auto auto minmax(0, 1fr)}
+
+    .swal2-container.swal2-top-start > .swal2-popup {align-self: start}
+
+    .swal2-container.swal2-top > .swal2-popup {grid-column: 2;align-self: start;justify-self: center}
+
+    .swal2-container.swal2-top-end > .swal2-popup, .swal2-container.swal2-top-right > .swal2-popup {grid-column: 3;align-self: start;justify-self: end}
+
+    .swal2-container.swal2-center-left > .swal2-popup, .swal2-container.swal2-center-start > .swal2-popup {grid-row: 2;align-self: center}
+
+    .swal2-container.swal2-center > .swal2-popup {grid-column: 2;grid-row: 2;align-self: center;justify-self: center}
+
+    .swal2-container.swal2-center-end > .swal2-popup, .swal2-container.swal2-center-right > .swal2-popup {grid-column: 3;grid-row: 2;align-self: center;justify-self: end}
+
+    .swal2-container.swal2-bottom-left > .swal2-popup, .swal2-container.swal2-bottom-start > .swal2-popup {grid-column: 1;grid-row: 3;align-self: end}
+
+    .swal2-container.swal2-bottom > .swal2-popup {grid-column: 2;grid-row: 3;justify-self: center;align-self: end}
+
+    .swal2-container.swal2-bottom-end > .swal2-popup, .swal2-container.swal2-bottom-right > .swal2-popup {grid-column: 3;grid-row: 3;align-self: end;justify-self: end}
+
+    .swal2-container.swal2-grow-fullscreen > .swal2-popup, .swal2-container.swal2-grow-row > .swal2-popup {grid-column: 1/4;width: 100%}
+
+    .swal2-container.swal2-grow-column > .swal2-popup, .swal2-container.swal2-grow-fullscreen > .swal2-popup {grid-row: 1/4;align-self: stretch}
+
+    .swal2-container.swal2-no-transition {transition: none !important}
+
+    .swal2-popup {display: none;position: relative;box-sizing: border-box;grid-template-columns:minmax(0, 100%);width: 32em;max-width: 100%;padding: 0 0 1.25em;border: none;border-radius: 5px;background: #FFF;color: #545454;font-family: inherit;font-size: 1rem}
+
+    .swal2-popup:focus {outline: 0}
+
+    .swal2-popup.swal2-loading {overflow-y: hidden}
+
+    .swal2-title {position: relative;max-width: 100%;margin: 0;padding: .8em 1em 0;color: inherit;font-size: 1.875em;font-weight: 600;text-align: center;text-transform: none;word-wrap: break-word}
+
+    .swal2-actions {display: flex;z-index: 1;box-sizing: border-box;flex-wrap: wrap;align-items: center;justify-content: center;width: auto;margin: 1.25em auto 0;padding: 0}
+
+    .swal2-actions:not(.swal2-loading) .swal2-styled[disabled] {opacity: .4}
+
+    .swal2-actions:not(.swal2-loading) .swal2-styled:hover {background-image: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1))}
+
+    .swal2-actions:not(.swal2-loading) .swal2-styled:active {background-image: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2))}
+
+    .swal2-loader {display: none;align-items: center;justify-content: center;width: 2.2em;height: 2.2em;margin: 0 1.875em;-webkit-animation: swal2-rotate-loading 1.5s linear 0s infinite normal;animation: swal2-rotate-loading 1.5s linear 0s infinite normal;border-width: .25em;border-style: solid;border-radius: 100%;border-color: #2778C4 transparent #2778C4 transparent}
+
+    .swal2-styled {margin: .3125em;padding: .625em 1.1em;transition: box-shadow .1s;box-shadow: 0 0 0 3px transparent;font-weight: 500}
+
+    .swal2-styled:not([disabled]) {cursor: pointer}
+
+    .swal2-styled.swal2-confirm {border: 0;border-radius: .25em;background: initial;background-color: #7066E0;color: #FFF;font-size: 1em}
+
+    .swal2-styled.swal2-confirm:focus {box-shadow: 0 0 0 3px rgba(112, 102, 224, .5)}
+
+    .swal2-styled.swal2-deny {border: 0;border-radius: .25em;background: initial;background-color: #DC3741;color: #FFF;font-size: 1em}
+
+    .swal2-styled.swal2-deny:focus {box-shadow: 0 0 0 3px rgba(220, 55, 65, .5)}
+
+    .swal2-styled.swal2-cancel {border: 0;border-radius: .25em;background: initial;background-color: #6E7881;color: #FFF;font-size: 1em}
+
+    .swal2-styled.swal2-cancel:focus {box-shadow: 0 0 0 3px rgba(110, 120, 129, .5)}
+
+    .swal2-styled.swal2-default-outline:focus {box-shadow: 0 0 0 3px rgba(100, 150, 200, .5)}
+
+    .swal2-styled:focus {outline: 0}
+
+    .swal2-styled::-moz-focus-inner {border: 0}
+
+    .swal2-footer {justify-content: center;margin: 1em 0 0;padding: 1em 1em 0;border-top: 1px solid #EEE;color: inherit;font-size: 1em}
+
+    .swal2-timer-progress-bar-container {position: absolute;right: 0;bottom: 0;left: 0;grid-column: auto !important;overflow: hidden;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px}
+
+    .swal2-timer-progress-bar {width: 100%;height: .25em;background: rgba(0, 0, 0, .2)}
+
+    .swal2-image {max-width: 100%;margin: 2em auto 1em}
+
+    .swal2-close {z-index: 2;align-items: center;justify-content: center;width: 1.2em;height: 1.2em;margin-top: 0;margin-right: 0;margin-bottom: -1.2em;padding: 0;overflow: hidden;transition: color .1s, box-shadow .1s;border: none;border-radius: 5px;background: 0 0;color: #CCC;font-family: serif;font-family: monospace;font-size: 2.5em;cursor: pointer;justify-self: end}
+
+    .swal2-close:hover {transform: none;background: 0 0;color: #F27474}
+
+    .swal2-close:focus {outline: 0;box-shadow: inset 0 0 0 3px rgba(100, 150, 200, .5)}
+
+    .swal2-close::-moz-focus-inner {border: 0}
+
+    .swal2-html-container {z-index: 1;justify-content: center;margin: 1em 1.6em .3em;padding: 0;overflow: auto;color: inherit;font-size: 1.125em;font-weight: 400;line-height: normal;text-align: center;word-wrap: break-word;word-break: break-word}
+
+    .swal2-checkbox, .swal2-file, .swal2-input, .swal2-radio, .swal2-select, .swal2-textarea {margin: 1em 2em 3px}
+
+    .swal2-file, .swal2-input, .swal2-textarea {box-sizing: border-box;width: auto;transition: border-color .1s, box-shadow .1s;border: 1px solid #D9D9D9;border-radius: .1875em;background: inherit;box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06), 0 0 0 3px transparent;color: inherit;font-size: 1.125em}
+
+    .swal2-file.swal2-inputerror, .swal2-input.swal2-inputerror, .swal2-textarea.swal2-inputerror {border-color: #F27474 !important;box-shadow: 0 0 2px #F27474 !important}
+
+    .swal2-file:focus, .swal2-input:focus, .swal2-textarea:focus {border: 1px solid #B4DBED;outline: 0;box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06), 0 0 0 3px rgba(100, 150, 200, .5)}
+
+    .swal2-file::-moz-placeholder, .swal2-input::-moz-placeholder, .swal2-textarea::-moz-placeholder {color: #CCC}
+
+    .swal2-file:-ms-input-placeholder, .swal2-input:-ms-input-placeholder, .swal2-textarea:-ms-input-placeholder {color: #CCC}
+
+    .swal2-file::placeholder, .swal2-input::placeholder, .swal2-textarea::placeholder {color: #CCC}
+
+    .swal2-range {margin: 1em 2em 3px;background: #FFF}
+
+    .swal2-range input {width: 80%}
+
+    .swal2-range output {width: 20%;color: inherit;font-weight: 600;text-align: center}
+
+    .swal2-range input, .swal2-range output {height: 2.625em;padding: 0;font-size: 1.125em;line-height: 2.625em}
+
+    .swal2-input {height: 2.625em;padding: 0 .75em}
+
+    .swal2-file {width: 75%;margin-right: auto;margin-left: auto;background: inherit;font-size: 1.125em}
+
+    .swal2-textarea {height: 6.75em;padding: .75em}
+
+    .swal2-select {min-width: 50%;max-width: 100%;padding: .375em .625em;background: inherit;color: inherit;font-size: 1.125em}
+
+    .swal2-checkbox, .swal2-radio {align-items: center;justify-content: center;background: #FFF;color: inherit}
+
+    .swal2-checkbox label, .swal2-radio label {margin: 0 .6em;font-size: 1.125em}
+
+    .swal2-checkbox input, .swal2-radio input {flex-shrink: 0;margin: 0 .4em}
+
+    .swal2-input-label {display: flex;justify-content: center;margin: 1em auto 0}
+
+    .swal2-validation-message {align-items: center;justify-content: center;margin: 1em 0 0;padding: .625em;overflow: hidden;background: #F0F0F0;color: #666;font-size: 1em;font-weight: 300}
+
+    .swal2-validation-message::before {content: "!";display: inline-block;width: 1.5em;min-width: 1.5em;height: 1.5em;margin: 0 .625em;border-radius: 50%;background-color: #F27474;color: #FFF;font-weight: 600;line-height: 1.5em;text-align: center}
+
+    .swal2-icon {position: relative;box-sizing: content-box;justify-content: center;width: 5em;height: 5em;margin: 2.5em auto .6em;border: .25em solid transparent;border-radius: 50%;border-color: #000;font-family: inherit;line-height: 5em;cursor: default;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none}
+
+    .swal2-icon .swal2-icon-content {display: flex;align-items: center;font-size: 3.75em}
+
+    .swal2-icon.swal2-error {border-color: #F27474;color: #F27474}
+
+    .swal2-icon.swal2-error .swal2-x-mark {position: relative;flex-grow: 1}
+
+    .swal2-icon.swal2-error [class^=swal2-x-mark-line] {display: block;position: absolute;top: 2.3125em;width: 2.9375em;height: .3125em;border-radius: .125em;background-color: #F27474}
+
+    .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left] {left: 1.0625em;transform: rotate(45deg)}
+
+    .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right] {right: 1em;transform: rotate(-45deg)}
+
+    .swal2-icon.swal2-error.swal2-icon-show {-webkit-animation: swal2-animate-error-icon .5s;animation: swal2-animate-error-icon .5s}
+
+    .swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark {-webkit-animation: swal2-animate-error-x-mark .5s;animation: swal2-animate-error-x-mark .5s}
+
+    .swal2-icon.swal2-warning {border-color: #FACEA8;color: #F8BB86}
+
+    .swal2-icon.swal2-warning.swal2-icon-show {-webkit-animation: swal2-animate-error-icon .5s;animation: swal2-animate-error-icon .5s}
+
+    .swal2-icon.swal2-warning.swal2-icon-show .swal2-icon-content {-webkit-animation: swal2-animate-i-mark .5s;animation: swal2-animate-i-mark .5s}
+
+    .swal2-icon.swal2-info {border-color: #9DE0F6;color: #3FC3EE}
+
+    .swal2-icon.swal2-info.swal2-icon-show {-webkit-animation: swal2-animate-error-icon .5s;animation: swal2-animate-error-icon .5s}
+
+    .swal2-icon.swal2-info.swal2-icon-show .swal2-icon-content {-webkit-animation: swal2-animate-i-mark .8s;animation: swal2-animate-i-mark .8s}
+
+    .swal2-icon.swal2-question {border-color: #C9DAE1;color: #87ADBD}
+
+    .swal2-icon.swal2-question.swal2-icon-show {-webkit-animation: swal2-animate-error-icon .5s;animation: swal2-animate-error-icon .5s}
+
+    .swal2-icon.swal2-question.swal2-icon-show .swal2-icon-content {-webkit-animation: swal2-animate-question-mark .8s;animation: swal2-animate-question-mark .8s}
+
+    .swal2-icon.swal2-success {border-color: #A5DC86;color: #A5DC86}
+
+    .swal2-icon.swal2-success [class^=swal2-success-circular-line] {position: absolute;width: 3.75em;height: 7.5em;transform: rotate(45deg);border-radius: 50%}
+
+    .swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left] {top: -.4375em;left: -2.0635em;transform: rotate(-45deg);transform-origin: 3.75em 3.75em;border-radius: 7.5em 0 0 7.5em}
+
+    .swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right] {top: -.6875em;left: 1.875em;transform: rotate(-45deg);transform-origin: 0 3.75em;border-radius: 0 7.5em 7.5em 0}
+
+    .swal2-icon.swal2-success .swal2-success-ring {position: absolute;z-index: 2;top: -.25em;left: -.25em;box-sizing: content-box;width: 100%;height: 100%;border: .25em solid rgba(165, 220, 134, .3);border-radius: 50%}
+
+    .swal2-icon.swal2-success .swal2-success-fix {position: absolute;z-index: 1;top: .5em;left: 1.625em;width: .4375em;height: 5.625em;transform: rotate(-45deg)}
+
+    .swal2-icon.swal2-success [class^=swal2-success-line] {display: block;position: absolute;z-index: 2;height: .3125em;border-radius: .125em;background-color: #A5DC86}
+
+    .swal2-icon.swal2-success [class^=swal2-success-line][class$=tip] {top: 2.875em;left: .8125em;width: 1.5625em;transform: rotate(45deg)}
+
+    .swal2-icon.swal2-success [class^=swal2-success-line][class$=long] {top: 2.375em;right: .5em;width: 2.9375em;transform: rotate(-45deg)}
+
+    .swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip {-webkit-animation: swal2-animate-success-line-tip .75s;animation: swal2-animate-success-line-tip .75s}
+
+    .swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long {-webkit-animation: swal2-animate-success-line-long .75s;animation: swal2-animate-success-line-long .75s}
+
+    .swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right {-webkit-animation: swal2-rotate-success-circular-line 4.25s ease-in;animation: swal2-rotate-success-circular-line 4.25s ease-in}
+
+    .swal2-progress-steps {flex-wrap: wrap;align-items: center;max-width: 100%;margin: 1.25em auto;padding: 0;background: inherit;font-weight: 600}
+
+    .swal2-progress-steps li {display: inline-block;position: relative}
+
+    .swal2-progress-steps .swal2-progress-step {z-index: 20;flex-shrink: 0;width: 2em;height: 2em;border-radius: 2em;background: #2778C4;color: #FFF;line-height: 2em;text-align: center}
+
+    .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step {background: #2778C4}
+
+    .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step ~ .swal2-progress-step {background: #ADD8E6;color: #FFF}
+
+    .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step ~ .swal2-progress-step-line {background: #ADD8E6}
+
+    .swal2-progress-steps .swal2-progress-step-line {z-index: 10;flex-shrink: 0;width: 2.5em;height: .4em;margin: 0 -1px;background: #2778C4}
+
+    [class^=swal2] {-webkit-tap-highlight-color: transparent}
+
+    .swal2-show {-webkit-animation: swal2-show .3s;animation: swal2-show .3s}
+
+    .swal2-hide {-webkit-animation: swal2-hide .15s forwards;animation: swal2-hide .15s forwards}
+
+    .swal2-noanimation {transition: none}
+
+    .swal2-scrollbar-measure {position: absolute;top: -9999px;width: 50px;height: 50px;overflow: scroll}
+
+    .swal2-rtl .swal2-close {margin-right: initial;margin-left: 0}
+
+    .swal2-rtl .swal2-timer-progress-bar {right: 0;left: auto}
+
+    .swal2-no-war {display: flex;position: fixed;z-index: 1061;top: 0;left: 0;align-items: center;justify-content: center;width: 100%;height: 3.375em;background: #20232A;color: #FFF;text-align: center}
+
+    .swal2-no-war a {color: #61DAFB;text-decoration: none}
+
+    .swal2-no-war a:hover {text-decoration: underline}
+
+    @-webkit-keyframes swal2-toast-show {
+        0% {transform: translateY(-.625em) rotateZ(2deg)}
+        33% {transform: translateY(0) rotateZ(-2deg)}
+        66% {transform: translateY(.3125em) rotateZ(2deg)}
+        100% {transform: translateY(0) rotateZ(0)}
+    }
+
+    @keyframes swal2-toast-show {
+        0% {transform: translateY(-.625em) rotateZ(2deg)}
+        33% {transform: translateY(0) rotateZ(-2deg)}
+        66% {transform: translateY(.3125em) rotateZ(2deg)}
+        100% {transform: translateY(0) rotateZ(0)}
+    }
+
+    @-webkit-keyframes swal2-toast-hide {
+        100% {transform: rotateZ(1deg);opacity: 0}
+    }
+
+    @keyframes swal2-toast-hide {
+        100% {transform: rotateZ(1deg);opacity: 0}
+    }
+
+    @-webkit-keyframes swal2-toast-animate-success-line-tip {
+        0% {top: .5625em;left: .0625em;width: 0}
+        54% {top: .125em;left: .125em;width: 0}
+        70% {top: .625em;left: -.25em;width: 1.625em}
+        84% {top: 1.0625em;left: .75em;width: .5em}
+        100% {top: 1.125em;left: .1875em;width: .75em}
+    }
+
+    @keyframes swal2-toast-animate-success-line-tip {
+        0% {top: .5625em;left: .0625em;width: 0}
+        54% {top: .125em;left: .125em;width: 0}
+        70% {top: .625em;left: -.25em;width: 1.625em}
+        84% {top: 1.0625em;left: .75em;width: .5em}
+        100% {top: 1.125em;left: .1875em;width: .75em}
+    }
+
+    @-webkit-keyframes swal2-toast-animate-success-line-long {
+        0% {top: 1.625em;right: 1.375em;width: 0}
+        65% {top: 1.25em;right: .9375em;width: 0}
+        84% {top: .9375em;right: 0;width: 1.125em}
+        100% {top: .9375em;right: .1875em;width: 1.375em}
+    }
+
+    @keyframes swal2-toast-animate-success-line-long {
+        0% {top: 1.625em;right: 1.375em;width: 0}
+        65% {top: 1.25em;right: .9375em;width: 0}
+        84% {top: .9375em;right: 0;width: 1.125em}
+        100% {top: .9375em;right: .1875em;width: 1.375em}
+    }
+
+    @-webkit-keyframes swal2-show {
+        0% {transform: scale(.7)}
+        45% {transform: scale(1.05)}
+        80% {transform: scale(.95)}
+        100% {transform: scale(1)}
+    }
+
+    @keyframes swal2-show {
+        0% {transform: scale(.7)}
+        45% {transform: scale(1.05)}
+        80% {transform: scale(.95)}
+        100% {transform: scale(1)}
+    }
+
+    @-webkit-keyframes swal2-hide {
+        0% {transform: scale(1);opacity: 1}
+        100% {transform: scale(.5);opacity: 0}
+    }
+
+    @keyframes swal2-hide {
+        0% {transform: scale(1);opacity: 1}
+        100% {transform: scale(.5);opacity: 0}
+    }
+
+    @-webkit-keyframes swal2-animate-success-line-tip {
+        0% {top: 1.1875em;left: .0625em;width: 0}
+        54% {top: 1.0625em;left: .125em;width: 0}
+        70% {top: 2.1875em;left: -.375em;width: 3.125em}
+        84% {top: 3em;left: 1.3125em;width: 1.0625em}
+        100% {top: 2.8125em;left: .8125em;width: 1.5625em}
+    }
+
+    @keyframes swal2-animate-success-line-tip {
+        0% {top: 1.1875em;left: .0625em;width: 0}
+        54% {top: 1.0625em;left: .125em;width: 0}
+        70% {top: 2.1875em;left: -.375em;width: 3.125em}
+        84% {top: 3em;left: 1.3125em;width: 1.0625em}
+        100% {top: 2.8125em;left: .8125em;width: 1.5625em}
+    }
+
+    @-webkit-keyframes swal2-animate-success-line-long {
+        0% {top: 3.375em;right: 2.875em;width: 0}
+        65% {top: 3.375em;right: 2.875em;width: 0}
+        84% {top: 2.1875em;right: 0;width: 3.4375em}
+        100% {top: 2.375em;right: .5em;width: 2.9375em}
+    }
+
+    @keyframes swal2-animate-success-line-long {
+        0% {top: 3.375em;right: 2.875em;width: 0}
+        65% {top: 3.375em;right: 2.875em;width: 0}
+        84% {top: 2.1875em;right: 0;width: 3.4375em}
+        100% {top: 2.375em;right: .5em;width: 2.9375em}
+    }
+
+    @-webkit-keyframes swal2-rotate-success-circular-line {
+        0% {transform: rotate(-45deg)}
+        5% {transform: rotate(-45deg)}
+        12% {transform: rotate(-405deg)}
+        100% {transform: rotate(-405deg)}
+    }
+
+    @keyframes swal2-rotate-success-circular-line {
+        0% {transform: rotate(-45deg)}
+        5% {transform: rotate(-45deg)}
+        12% {transform: rotate(-405deg)}
+        100% {transform: rotate(-405deg)}
+    }
+
+    @-webkit-keyframes swal2-animate-error-x-mark {
+        0% {margin-top: 1.625em;transform: scale(.4);opacity: 0}
+        50% {margin-top: 1.625em;transform: scale(.4);opacity: 0}
+        80% {margin-top: -.375em;transform: scale(1.15)}
+        100% {margin-top: 0;transform: scale(1);opacity: 1}
+    }
+
+    @keyframes swal2-animate-error-x-mark {
+        0% {margin-top: 1.625em;transform: scale(.4);opacity: 0}
+        50% {margin-top: 1.625em;transform: scale(.4);opacity: 0}
+        80% {margin-top: -.375em;transform: scale(1.15)}
+        100% {margin-top: 0;transform: scale(1);opacity: 1}
+    }
+
+    @-webkit-keyframes swal2-animate-error-icon {
+        0% {transform: rotateX(100deg);opacity: 0}
+        100% {transform: rotateX(0);opacity: 1}
+    }
+
+    @keyframes swal2-animate-error-icon {
+        0% {transform: rotateX(100deg);opacity: 0}
+        100% {transform: rotateX(0);opacity: 1}
+    }
+
+    @-webkit-keyframes swal2-rotate-loading {
+        0% {transform: rotate(0)}
+        100% {transform: rotate(360deg)}
+    }
+
+    @keyframes swal2-rotate-loading {
+        0% {transform: rotate(0)}
+        100% {transform: rotate(360deg)}
+    }
+
+    @-webkit-keyframes swal2-animate-question-mark {
+        0% {transform: rotateY(-360deg)}
+        100% {transform: rotateY(0)}
+    }
+
+    @keyframes swal2-animate-question-mark {
+        0% {transform: rotateY(-360deg)}
+        100% {transform: rotateY(0)}
+    }
+
+    @-webkit-keyframes swal2-animate-i-mark {
+        0% {transform: rotateZ(45deg);opacity: 0}
+        25% {transform: rotateZ(-25deg);opacity: .4}
+        50% {transform: rotateZ(15deg);opacity: .8}
+        75% {transform: rotateZ(-5deg);opacity: 1}
+        100% {transform: rotateX(0);opacity: 1}
+    }
+
+    @keyframes swal2-animate-i-mark {
+        0% {transform: rotateZ(45deg);opacity: 0}
+        25% {transform: rotateZ(-25deg);opacity: .4}
+        50% {transform: rotateZ(15deg);opacity: .8}
+        75% {transform: rotateZ(-5deg);opacity: 1}
+        100% {transform: rotateX(0);opacity: 1}
+    }
+
+    body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {overflow: hidden}
+
+    body.swal2-height-auto {height: auto !important}
+
+    body.swal2-no-backdrop .swal2-container {background-color: transparent !important;pointer-events: none}
+
+    body.swal2-no-backdrop .swal2-container .swal2-popup {pointer-events: all}
+
+    body.swal2-no-backdrop .swal2-container .swal2-modal {box-shadow: 0 0 10px rgba(0, 0, 0, .4)}
+
+    @media print {
+        body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {overflow-y: scroll !important}
+
+        body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) > [aria-hidden=true] {display: none}
+
+        body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container {position: static !important}
+    }
+
+    body.swal2-toast-shown .swal2-container {box-sizing: border-box;width: 360px;max-width: 100%;background-color: transparent;pointer-events: none}
+
+    body.swal2-toast-shown .swal2-container.swal2-top {top: 0;right: auto;bottom: auto;left: 50%;transform: translateX(-50%)}
+
+    body.swal2-toast-shown .swal2-container.swal2-top-end, body.swal2-toast-shown .swal2-container.swal2-top-right {top: 0;right: 0;bottom: auto;left: auto}
+
+    body.swal2-toast-shown .swal2-container.swal2-top-left, body.swal2-toast-shown .swal2-container.swal2-top-start {top: 0;right: auto;bottom: auto;left: 0}
+
+    body.swal2-toast-shown .swal2-container.swal2-center-left, body.swal2-toast-shown .swal2-container.swal2-center-start {top: 50%;right: auto;bottom: auto;left: 0;transform: translateY(-50%)}
+
+    body.swal2-toast-shown .swal2-container.swal2-center {top: 50%;right: auto;bottom: auto;left: 50%;transform: translate(-50%, -50%)}
+
+    body.swal2-toast-shown .swal2-container.swal2-center-end, body.swal2-toast-shown .swal2-container.swal2-center-right {top: 50%;right: 0;bottom: auto;left: auto;transform: translateY(-50%)}
+
+    body.swal2-toast-shown .swal2-container.swal2-bottom-left, body.swal2-toast-shown .swal2-container.swal2-bottom-start {top: auto;right: auto;bottom: 0;left: 0}
+
+    body.swal2-toast-shown .swal2-container.swal2-bottom {top: auto;right: auto;bottom: 0;left: 50%;transform: translateX(-50%)}
+
+    body.swal2-toast-shown .swal2-container.swal2-bottom-end, body.swal2-toast-shown .swal2-container.swal2-bottom-right {top: auto;right: 0;bottom: 0;left: auto}</style>
+</head>
+<body class="page ">
+<nav class="navbar navbar-top navbar-expand navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <a class="logo" href="https://tasty.wip/admin/dashboard">
+                <i class="logo-svg">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" style="height:42px;width:42px;">
+                        <g>
+                            <defs>
+                                <clipPath id="clip-path-id-viewbox-item-0">
+                                    <rect x="0.0" y="0.0" width="2351.85" height="3016.6"></rect>
+                                </clipPath>
+                            </defs>
+                            <g transform="translate(56.0 2.0) rotate(0.0 193.0 248.0) scale(0.16412611348512873 0.1644235231717828)">
+                                <g clip-path="url(#clip-path-id-viewbox-item-0)" transform="translate(-0.0 -0.0)">
+                                    <path
+                                        d="M1385.35,2973.45c77.97,38.77,169.23,31.59,238.38-18.56c531.73-386.54,643.3-765.6,643.3-1015.46  c0-337.59-187-602.57-371.46-817.55c4.78,176.65-66.62,287.14-127.7,348.82c-67.21,67.82-136.96,93.12-137.56,93.42  c-0.9,0.3-1.79,0.15-2.39-0.45c-0.6-0.6-1.05-1.5-0.9-2.25c0.45-2.54,42.72-258.09,42.72-454.06  c0-402.41-192.98-677.87-354.73-838.06C1158.46,114.65,1000.44,34.71,966.39,18.39c14.49,27.55,67.81,136.68,67.81,255.1  c0,217.07-184.31,415.59-397.75,645.38c-260.34,280.4-555.33,598.08-555.33,1020.55c0,240.73,111.27,611.1,641.06,1008.27  c68.71,51.5,160.27,59.58,239.13,21.11c68.26-33.38,109.93-95.06,111.57-164.98l1.79-81.89c0.3-14.52-4.48-28.74-13.89-41.17  C838.53,2386.3,841.67,2307.4,846.6,2187.94c0.45-11.53,0.9-23.35,1.19-35.78c3.14-135.19,79.76-715.45,88.57-781.17  c0.6-4.49,5.08-7.78,10.31-7.78h18.67c2.99,0,5.97,1.2,7.92,3.14c1.64,1.65,2.54,3.59,2.54,5.84l-3.29,775.78  c0,6.29,2.84,12.58,8.07,17.37c6.87,6.44,16.58,9.58,26.89,8.98c3.58-0.3,7.17-0.9,11.05-1.8c9.86-2.54,16.73-9.73,17.18-17.81  l37.79-782.67c0.3-4.79,4.78-8.53,10.31-8.53h13.44c5.68,0,10.16,3.74,10.31,8.53c1.05,24.85,26.74,610.65,26.74,713.8  c0,61.23,11.65,83.24,21.36,90.87c5.97,4.64,10.75,3.59,10.9,3.44c0.15,0,0.45,0,0.6,0h14.34c0.15,0,0.45,0,0.6,0.15  c0.15,0,5.08,1.2,10.9-3.44c9.71-7.64,21.36-29.64,21.36-90.87c0-97.31,22.25-611.7,26.74-713.8c0.15-4.79,4.78-8.53,10.31-8.53  h13.44c5.53,0,10.16,3.74,10.31,8.53l37.79,782.67c0.45,8.08,7.32,15.27,17.18,17.81c3.73,1.05,7.47,1.65,11.05,1.95  c10.31,0.75,20.01-2.54,26.89-8.83c5.23-4.79,8.07-11.08,8.07-17.37l-3.29-775.63c0-2.1,0.9-4.19,2.39-5.84  c1.94-1.95,4.93-3.14,7.92-3.14h18.67c5.23,0,9.71,3.29,10.31,7.78c8.66,65.72,85.29,645.98,88.57,781.17  c0.3,12.43,0.75,24.25,1.2,35.78c4.93,119.47,8.07,198.36-214.18,492.98c-9.41,12.43-14.19,26.65-13.89,41.32l1.94,87.43  C1276.91,2878.68,1317.98,2940.06,1385.35,2973.45z" style="fill:#192957;"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </i>
+            </a>
+        </div>
+        <div class="page-title">
+            <span>Menus</span>
+        </div>
+        <div class="navbar navbar-right">
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navSidebar" aria-controls="navSidebar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars"></span>
+            </button>
+
+            <ul id="menu-mainmenu" class="navbar-nav" data-control="mainmenu" data-alias="mainmenu">
+                <li id="menuitem-preview" class="nav-item">
+                    <a class="nav-link front-end" title="" href="https://tasty.wip/" target="_blank" data-bs-original-title="Storefront">
+                        <i class="fa fa-store"></i>
+                    </a>
+                </li>
+
+                <li id="menuitem-activity" class="nav-item dropdown">
+                    <a class="nav-link" href="https://tasty.wip/admin" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                        <i class="fa fa-bell" role="button"></i>
+                    </a>
+
+                    <ul class="dropdown-menu " data-request-options="activity">
+                        <li class="dropdown-header"> Recent activities</li>
+                        <li id="menuitem-activity-activity-options" class="dropdown-body">
+                            <p class="wrap-all text-muted text-center">
+                                <span class="ti-loading spinner-border fa-3x fa-fw"></span>
+                            </p>
+                        </li>
+                        <li class="dropdown-footer">
+                            <a class="text-center" href="https://tasty.wip/admin/activities"><i class="fa fa-ellipsis-h"></i></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="" data-bs-toggle="dropdown">
+                        <i class="fa fa-gear" role="button"></i>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <div class="menu menu-grid row">
+                            <div class="menu-item col col-4">
+                                <a class="menu-link" href="https://tasty.wip/admin/settings/edit/general">
+                                    <i class="fa fa-sliders"></i>
+                                    <span>General</span>
+                                </a>
+                            </div>
+                            <div class="menu-item col col-4">
+                                <a class="menu-link" href="https://tasty.wip/admin/settings/edit/setup">
+                                    <i class="fa fa-file-invoice"></i>
+                                    <span>Sales</span>
+                                </a>
+                            </div>
+                            <div class="menu-item col col-4">
+                                <a class="menu-link" href="https://tasty.wip/admin/settings/edit/site">
+                                    <i class="fa fa-globe"></i>
+                                    <span>Localization</span>
+                                </a>
+                            </div>
+                            <div class="menu-item col col-4">
+                                <a class="menu-link" href="https://tasty.wip/admin/settings/edit/user">
+                                    <i class="fa fa-user"></i>
+                                    <span>Customer registration</span>
+                                </a>
+                            </div>
+                            <div class="menu-item col col-4">
+                                <a class="menu-link" href="https://tasty.wip/admin/settings/edit/mail">
+                                    <i class="fa fa-envelope"></i>
+                                    <span>Mail</span>
+                                </a>
+                            </div>
+                            <div class="menu-item col col-4">
+                                <a class="menu-link" href="https://tasty.wip/admin/settings/edit/media">
+                                    <i class="fa fa-image"></i>
+                                    <span>Media</span>
+                                </a>
+                            </div>
+                            <div class="menu-item col col-4">
+                                <a class="menu-link" href="https://tasty.wip/admin/settings/edit/tax">
+                                    <i class="fa fa-file"></i>
+                                    <span>Tax</span>
+                                </a>
+                            </div>
+                            <div class="menu-item col col-4">
+                                <a class="menu-link" href="https://tasty.wip/admin/settings/edit/advanced">
+                                    <i class="fa fa-cog"></i>
+                                    <span>Advanced</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="dropdown-footer">
+                            <a class="text-center" href="https://tasty.wip/admin/settings"><i class="fa fa-ellipsis-h"></i></a>
+                        </div>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown" data-control="location-picker">
+                    <a class="nav-link" href="" data-bs-toggle="dropdown">
+                        <i class="fa fa-location-dot" role="button"></i>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" data-request="mainmenu::onChooseLocation" data-request-data="location: '1'">Default</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link" data-bs-toggle="dropdown">
+                        <img class="rounded-circle" src="html_files/2d6826023f031865b164c14f78254c0e.jpg">
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="d-flex flex-column w-100 align-items-center">
+                            <div class="pt-4 px-4 pb-2">
+                                <img class="rounded-circle" src="html_files/2d6826023f031865b164c14f78254c0e.jpg">
+                            </div>
+                            <div class="pb-3 text-center">
+                                <div class="text-uppercase">Chef Admin</div>
+                                <div class="text-muted">Owner</div>
+                            </div>
+                        </div>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item " data-bs-toggle="modal" data-bs-target="#editStaffStatusModal" role="button">
+                            <i class="fa fa-circle fa-fw text-success"></i><span>Set Status</span>
+                        </a>
+                        <a class="dropdown-item " href="https://tasty.wip/admin/users/account">
+                            <i class="fa fa-user fa-fw"></i><span>Edit Details</span>
+                        </a>
+                        <a class="dropdown-item text-danger" href="https://tasty.wip/admin/logout">
+                            <i class="fa fa-power-off fa-fw"></i><span>Logout</span>
+                        </a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item text-black-50" href="https://tastyigniter.com/support" target="_blank">
+                            <i class="fa fa-circle-question fa-fw"></i>Help Center </a>
+                        <a class="dropdown-item text-black-50" href="https://tastyigniter.com/docs" target="_blank">
+                            <i class="fa fa-book fa-fw"></i>Documentation </a>
+                        <a class="dropdown-item text-black-50" href="https://forum.tastyigniter.com/" target="_blank">
+                            <i class="fa fa-comments fa-fw"></i>Community Support </a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<aside class="sidebar" role="navigation">
+    <div class="">
+
+    </div>
+    <div id="navSidebar" class="nav-sidebar">
+        <ul id="side-nav-menu" class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link  dashboard admin" href="https://tasty.wip/admin/dashboard">
+                    <i class="fa fa-tachometer-alt fa-fw"></i>
+                    <span>Dashboard</span>
+                </a>
+
+            </li>
+            <li class="active nav-item">
+                <a class="nav-link has-arrow restaurant" href="#">
+                    <i class="fa fa-gem fa-fw"></i>
+                    <span>Restaurant</span>
+                </a>
+
+                <ul class="nav collapse show" aria-expanded="true">
+                    <li class="nav-item w-100">
+                        <a class="nav-link locations" href="https://tasty.wip/admin/locations">
+                            <span>Locations</span>
+                        </a>
+
+                    </li>
+                    <li class="active nav-item w-100">
+                        <a class="nav-link menus" href="https://tasty.wip/admin/menus">
+                            <span>Menu Items</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link categories" href="https://tasty.wip/admin/categories">
+                            <span>Categories</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link mealtimes" href="https://tasty.wip/admin/mealtimes">
+                            <span>Mealtimes</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link tables" href="https://tasty.wip/admin/tables">
+                            <span>Tables</span>
+                        </a>
+
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link has-arrow sales" href="#">
+                    <i class="fa fa-file-invoice fa-fw"></i>
+                    <span>Sales</span>
+                </a>
+
+                <ul class="nav collapse" aria-expanded="false">
+                    <li class="nav-item w-100">
+                        <a class="nav-link orders" href="https://tasty.wip/admin/orders">
+                            <span>Orders</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link reservations" href="https://tasty.wip/admin/reservations">
+                            <span>Reservations</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link statuses" href="https://tasty.wip/admin/statuses">
+                            <span>Statuses</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link payments" href="https://tasty.wip/admin/payments">
+                            <span>Payments</span>
+                        </a>
+
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link  customers" href="https://tasty.wip/admin/customers">
+                    <i class="fa fa-user fa-fw"></i>
+                    <span>Customers</span>
+                </a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link has-arrow design" href="#">
+                    <i class="fa fa-paint-brush fa-fw"></i>
+                    <span>Design</span>
+                </a>
+
+                <ul class="nav collapse" aria-expanded="false">
+                    <li class="nav-item w-100">
+                        <a class="nav-link themes" href="https://tasty.wip/admin/themes">
+                            <span>Themes</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link mail_templates" href="https://tasty.wip/admin/mail_templates">
+                            <span>Mail Templates</span>
+                        </a>
+
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link has-arrow localisation" href="#">
+                    <i class="fa fa-globe fa-fw"></i>
+                    <span>Localisation</span>
+                </a>
+
+                <ul class="nav collapse" aria-expanded="false">
+                    <li class="nav-item w-100">
+                        <a class="nav-link languages" href="https://tasty.wip/admin/languages">
+                            <span>Languages</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link currencies" href="https://tasty.wip/admin/currencies">
+                            <span>Currencies</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link countries" href="https://tasty.wip/admin/countries">
+                            <span>Countries</span>
+                        </a>
+
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link has-arrow tools" href="#">
+                    <i class="fa fa-wrench fa-fw"></i>
+                    <span>Tools</span>
+                </a>
+
+                <ul class="nav collapse" aria-expanded="false">
+                    <li class="nav-item w-100">
+                        <a class="nav-link media_manager" href="https://tasty.wip/admin/media_manager">
+                            <span>Media Manager</span>
+                        </a>
+
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link has-arrow system" href="#">
+                    <i class="fa fa-cog fa-fw"></i>
+                    <span>System</span>
+                </a>
+
+                <ul class="nav collapse" aria-expanded="false">
+                    <li class="nav-item w-100">
+                        <a class="nav-link users" href="https://tasty.wip/admin/users">
+                            <span>Staff</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link extensions" href="https://tasty.wip/admin/extensions">
+                            <span>Extensions</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link settings" href="https://tasty.wip/admin/settings">
+                            <span>Settings</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link updates" href="https://tasty.wip/admin/updates">
+                            <span>Updates</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item w-100">
+                        <a class="nav-link system_logs" href="https://tasty.wip/admin/system_logs">
+                            <span>System Logs</span>
+                        </a>
+
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</aside>
+<div class="page-wrapper">
+    <div class="page-content">
+        <div class="row-fluid">
+            <div id="toolbar" class="toolbar btn-toolbar ">
+                <div class="toolbar-action">
+                    <div class="progress-indicator-container">
+                        <a class="btn btn-primary" href="https://tasty.wip/admin/menus/create" tabindex="0"><i class="fa fa-plus"></i>&nbsp;&nbsp;New</a>
+
+                        <a class="btn btn-default" href="https://tasty.wip/admin/menu_options" tabindex="0">Options</a>
+
+                        <a class="btn btn-default" href="https://tasty.wip/admin/ingredients" tabindex="0">Ingredients</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="filter-list-filter" class="list-filter " data-store-name="ti_displayListFilter" style="display:none">
+                <form id="filter-form" class="form-inline" accept-charset="utf-8" method="POST" action="https://tasty.wip/admin/menus" role="form">
+                    <input type="hidden" name="_token" value="FAbzZ09Byv8e5BxwyQbDg1Tt9DXTPXUUmnxf5i5G">
+                    <div class="d-sm-flex flex-sm-wrap w-100 no-gutters">
+                        <div class="col col-sm-6 pb-sm-3 pr-sm-3">
+                            <div class="d-flex no-gutters">
+                                <div class="pr-3">
+                                    <button class="btn btn-outline-danger" type="button" data-request="list_filter::onClear" data-attach-loading=""><i class="fa fa-times"></i></button>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="filter-search">
+                                        <div class="input-group flex-fill">
+                                            <input type="text" name="list_filterSearch" class="form-control " placeholder="Search by name, price or stock qty." autocomplete="off">
+                                            <button class="btn btn-light" type="submit" data-request="list_filterSearch::onSubmit">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="_handler" value="list_filter::onSubmit">
+
+                        <div class="col col-md-3 pr-md-3">
+                            <div class="filter-scope selectlist form-group">
+                                <div class="control-selectlist w-100">
+        <span class="multiselect-native-select"><select data-control="selectlist" name="list_filter[location][]" data-non-selected-text="View all locations" multiple="multiple" data-enable-filtering="" data-enable-case-insensitive-filtering="" data-number-displayed="2">
+                            <option value="">View all locations</option>                                            <option value="1">Default</option>
+                    </select><div class="btn-group"><button type="button" class="multiselect dropdown-toggle form-select custom-select" data-bs-toggle="dropdown" title="View all locations"><span class="multiselect-selected-text">View all locations</span></button><div class="multiselect-container dropdown-menu" style="max-height: 200px; overflow: hidden auto;"><button type="button" class="dropdown-item multiselect-all" title="Select all/none"><span class="form-check"><input class="form-check-input" type="checkbox" value="multiselect-all"><label class="form-check-label font-weight-bold">Select all/none</label></span></button><button type="button" class="multiselect-option dropdown-item multiselect-item" title="View all locations"><span class="form-check"><input class="form-check-input" type="checkbox" value=""><label class="form-check-label">View all locations</label></span></button><button type="button" class="multiselect-option dropdown-item multiselect-item" title="Default"><span class="form-check"><input class="form-check-input" type="checkbox" value="1"><label class="form-check-label">Default</label></span></button></div></div></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col col-md-3 pr-md-3">
+                            <div class="filter-scope selectlist form-group">
+                                <div class="control-selectlist w-100">
+        <span class="multiselect-native-select"><select data-control="selectlist" name="list_filter[category][]" data-non-selected-text="View all categories" multiple="multiple" data-enable-filtering="" data-enable-case-insensitive-filtering="" data-number-displayed="2">
+                            <option value="">View all categories</option>                                            <option value="1">Appetizer</option>
+                                            <option value="2">Main Course</option>
+                                            <option value="3">Salads</option>
+                                            <option value="4">Seafoods</option>
+                                            <option value="5">Traditional</option>
+                                            <option value="6">Desserts</option>
+                                            <option value="7">Drinks</option>
+                                            <option value="8">Specials</option>
+                    </select><div class="btn-group"><button type="button" class="multiselect dropdown-toggle form-select custom-select" data-bs-toggle="dropdown" title="View all categories"><span class="multiselect-selected-text">View all categories</span></button><div class="multiselect-container dropdown-menu" style="max-height: 200px; overflow: hidden auto;"><button type="button" class="dropdown-item multiselect-all" title="Select all/none"><span class="form-check"><input class="form-check-input" type="checkbox" value="multiselect-all"><label class="form-check-label font-weight-bold">Select all/none</label></span></button><button type="button" class="multiselect-option dropdown-item multiselect-item" title="View all categories"><span class="form-check"><input class="form-check-input" type="checkbox" value=""><label class="form-check-label">View all categories</label></span></button><button type="button" class="multiselect-option dropdown-item multiselect-item" title="Appetizer"><span class="form-check"><input class="form-check-input" type="checkbox" value="1"><label class="form-check-label">Appetizer</label></span></button><button type="button" class="multiselect-option dropdown-item multiselect-item" title="Main Course"><span class="form-check"><input class="form-check-input" type="checkbox" value="2"><label class="form-check-label">Main Course</label></span></button><button type="button" class="multiselect-option dropdown-item multiselect-item" title="Salads"><span class="form-check"><input class="form-check-input" type="checkbox" value="3"><label class="form-check-label">Salads</label></span></button><button type="button" class="multiselect-option dropdown-item multiselect-item" title="Seafoods"><span class="form-check"><input class="form-check-input" type="checkbox" value="4"><label class="form-check-label">Seafoods</label></span></button><button type="button" class="multiselect-option dropdown-item multiselect-item" title="Traditional"><span class="form-check"><input class="form-check-input" type="checkbox" value="5"><label class="form-check-label">Traditional</label></span></button><button type="button" class="multiselect-option dropdown-item multiselect-item" title="Desserts"><span class="form-check"><input class="form-check-input" type="checkbox" value="6"><label class="form-check-label">Desserts</label></span></button><button type="button" class="multiselect-option dropdown-item multiselect-item" title="Drinks"><span class="form-check"><input class="form-check-input" type="checkbox" value="7"><label class="form-check-label">Drinks</label></span></button><button type="button" class="multiselect-option dropdown-item multiselect-item" title="Specials"><span class="form-check"><input class="form-check-input" type="checkbox" value="8"><label class="form-check-label">Specials</label></span></button></div></div></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col col-md-3 pr-md-3">
+                            <div class="filter-scope switch form-group">
+                                <select name="list_filter[menu_status]" class="form-select">
+                                    <option value="" selected="selected">View all status</option>
+                                    <option value="1">Enabled</option>
+                                    <option value="0">Disabled</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <form method="POST" action="https://tasty.wip/admin/menus" accept-charset="UTF-8" id="list-form" role="form">
+                <input name="_token" type="hidden" value="FAbzZ09Byv8e5BxwyQbDg1Tt9DXTPXUUmnxf5i5G">
+
+                <div id="lists" class="list-table table-responsive">
+                    <table id="lists-table" class="table table-hover mb-0 border-bottom">
+                        <thead>
+                        <tr class="bulk-actions hide" data-control="bulk-actions" data-action-total-records="12">
+                            <td class="bulk-action pb-0 ">
+                                <div class="form-check active">
+                                    <input type="checkbox" id="checkboxAll-bulk-lists" class="form-check-input" onclick="$('input[name*=\'checked\']').prop('checked', this.checked)">
+                                    <label class="form-check-label" for="checkboxAll-bulk-lists">&nbsp;</label>
+                                </div>
+                            </td>
+                            <td class="w-100 pb-0 pt-1" colspan="999">
+                                <div>
+                                    <div class="btn-counter btn py-1 text-nowrap">
+                                        <span data-action-counter="">0</span> record(s) selected
+                                    </div>
+                                    <a role="button" class="py-1 pl-0 btn-select-all btn btn-link hide" data-control="check-total-records">Select all 12 records</a>
+                                    <input type="hidden" data-action-select-all="" name="select_all" value="1" disabled="disabled">
+                                    &nbsp;
+                                    <div class="dropdown d-inline-block">
+                                        <button type="button" tabindex="0" class="py-1 btn btn-light dropdown-toggle" data-bs-toggle="dropdown" statuscolumn="menu_status">Enable/Disable</button>
+                                        <div class="dropdown-menu">
+                                            <button type="button" class="py-1 dropdown-item" data-control="bulk-action" data-attach-loading="" data-request="list::onBulkAction" data-request-data="code: 'status.enable'" data-request-form="#list-form" tabindex="0">Enable</button>
+
+                                            <button type="button" class="py-1 dropdown-item text-danger" data-control="bulk-action" data-attach-loading="" data-request="list::onBulkAction" data-request-data="code: 'status.disable'" data-request-form="#list-form" tabindex="0">Disable</button>
+
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="py-1 btn btn-light text-danger" data-request-confirm="This cannot be undone! Are you sure you want to do this?" data-control="bulk-action" data-attach-loading="" data-request="list::onBulkAction" data-request-data="code: 'delete',_method:'DELETE'" data-request-form="#list-form" tabindex="0"><i class="fa fa-trash-o"></i>&nbsp;&nbsp;Delete</button>
+
+                                </div>
+                                <div id="lists-bulk-action-modal-container"></div>
+                            </td>
+                        </tr>
+
+                        <tr class="list-header">
+
+                            <th class="list-action text-nowrap">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkboxAll-lists" class="form-check-input" onclick="$('input[name*=\'checked\']').prop('checked', this.checked)">
+                                    <label class="form-check-label" for="checkboxAll-lists">&nbsp;</label>
+                                </div>
+                            </th>
+
+                            <th class="list-action  text-nowrap"></th>
+                            <th class="list-cell-name-menu-name list-cell-type-text  text-nowrap">
+                                <a class="sort-col" data-request="list::onSort" data-request-form="#list-form" data-request-data="sort_by: 'menu_name'">
+                                    Name
+                                    <i class="fa fa-sort-ASC"></i>
+                                </a>
+                            </th>
+                            <th class="list-cell-name-category list-cell-type-text  text-nowrap">
+                                <a class="sort-col" data-request="list::onSort" data-request-form="#list-form" data-request-data="sort_by: 'category'">
+                                    Category
+                                    <i class="fa fa-sort-ASC"></i>
+                                </a>
+                            </th>
+                            <th class="list-cell-name-menu-price list-cell-type-currency  text-nowrap">
+                                <a class="sort-col" data-request="list::onSort" data-request-form="#list-form" data-request-data="sort_by: 'menu_price'">
+                                    Price
+                                    <i class="fa fa-sort-ASC"></i>
+                                </a>
+                            </th>
+                            <th class="list-cell-name-stock-qty list-cell-type-number text-nowrap">
+                                <span>Stock Qty</span>
+                            </th>
+                            <th class="list-cell-name-special-status list-cell-type-switch  text-nowrap">
+                                <a class="sort-col" data-request="list::onSort" data-request-form="#list-form" data-request-data="sort_by: 'special_status'">
+                                    Special Status
+                                    <i class="fa fa-sort-ASC"></i>
+                                </a>
+                            </th>
+                            <th class="list-cell-name-menu-status list-cell-type-switch  text-nowrap">
+                                <a class="sort-col" data-request="list::onSort" data-request-form="#list-form" data-request-data="sort_by: 'menu_status'">
+                                    Status
+                                    <i class="fa fa-sort-ASC"></i>
+                                </a>
+                            </th>
+
+                            <th class="list-setup">
+                                <button type="button" class="btn btn-outline-default btn-sm border-none" title="" data-toggle="list-filter" data-target=".list-filter" data-bs-original-title="Filter" aria-label="Filter"><i class="fa fa-filter"></i></button>
+                            </th>
+                            <th class="list-setup">
+                                <button type="button" class="btn btn-outline-default btn-sm border-none" title="Setup" data-bs-toggle="modal" data-bs-target="#lists-setup-modal" data-request="list::onLoadSetup"><i class="fa fa-sliders"></i></button>
+                            </th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr>
+
+                            <td class="list-action">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-12" class="form-check-input" value="12" name="checked[]">
+                                    <label class="form-check-label" for="checkbox-12">&nbsp;</label>
+                                </div>
+                            </td>
+
+                            <td class="list-action ">
+                                <a class="btn btn-edit" href="https://tasty.wip/admin/menus/edit/12">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+
+                            </td>
+
+                            <td class="list-col-index-1 list-col-name-menu-name list-col-type-text ">
+                                Boiled Plantain
+                            </td>
+                            <td class="list-col-index-2 list-col-name-category list-col-type-text ">
+
+                            </td>
+                            <td class="list-col-index-3 list-col-name-menu-price list-col-type-currency ">
+                                £9.99
+                            </td>
+                            <td class="list-col-index-4 list-col-name-stock-qty list-col-type-number ">
+                                0
+                            </td>
+                            <td class="list-col-index-5 list-col-name-special-status list-col-type-switch ">
+                                --
+                            </td>
+                            <td class="list-col-index-6 list-col-name-menu-status list-col-type-switch ">
+                                Enabled
+                            </td>
+
+                            <td class="list-setup">&nbsp;</td>
+
+                            <td class="list-setup">&nbsp;</td>
+                        </tr>
+                        <tr>
+
+                            <td class="list-action">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-11" class="form-check-input" value="11" name="checked[]">
+                                    <label class="form-check-label" for="checkbox-11">&nbsp;</label>
+                                </div>
+                            </td>
+
+                            <td class="list-action ">
+                                <a class="btn btn-edit" href="https://tasty.wip/admin/menus/edit/11">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+
+                            </td>
+
+                            <td class="list-col-index-1 list-col-name-menu-name list-col-type-text ">
+                                YAM PORRIDGE
+                            </td>
+                            <td class="list-col-index-2 list-col-name-category list-col-type-text ">
+
+                            </td>
+                            <td class="list-col-index-3 list-col-name-menu-price list-col-type-currency ">
+                                £9.99
+                            </td>
+                            <td class="list-col-index-4 list-col-name-stock-qty list-col-type-number ">
+                                0
+                            </td>
+                            <td class="list-col-index-5 list-col-name-special-status list-col-type-switch ">
+                                --
+                            </td>
+                            <td class="list-col-index-6 list-col-name-menu-status list-col-type-switch ">
+                                Enabled
+                            </td>
+
+                            <td class="list-setup">&nbsp;</td>
+
+                            <td class="list-setup">&nbsp;</td>
+                        </tr>
+                        <tr>
+
+                            <td class="list-action">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-10" class="form-check-input" value="10" name="checked[]">
+                                    <label class="form-check-label" for="checkbox-10">&nbsp;</label>
+                                </div>
+                            </td>
+
+                            <td class="list-action ">
+                                <a class="btn btn-edit" href="https://tasty.wip/admin/menus/edit/10">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+
+                            </td>
+
+                            <td class="list-col-index-1 list-col-name-menu-name list-col-type-text ">
+                                AMALA
+                            </td>
+                            <td class="list-col-index-2 list-col-name-category list-col-type-text ">
+
+                            </td>
+                            <td class="list-col-index-3 list-col-name-menu-price list-col-type-currency ">
+                                £11.99
+                            </td>
+                            <td class="list-col-index-4 list-col-name-stock-qty list-col-type-number ">
+                                0
+                            </td>
+                            <td class="list-col-index-5 list-col-name-special-status list-col-type-switch ">
+                                --
+                            </td>
+                            <td class="list-col-index-6 list-col-name-menu-status list-col-type-switch ">
+                                Enabled
+                            </td>
+
+                            <td class="list-setup">&nbsp;</td>
+
+                            <td class="list-setup">&nbsp;</td>
+                        </tr>
+                        <tr>
+
+                            <td class="list-action">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-9" class="form-check-input" value="9" name="checked[]">
+                                    <label class="form-check-label" for="checkbox-9">&nbsp;</label>
+                                </div>
+                            </td>
+
+                            <td class="list-action ">
+                                <a class="btn btn-edit" href="https://tasty.wip/admin/menus/edit/9">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+
+                            </td>
+
+                            <td class="list-col-index-1 list-col-name-menu-name list-col-type-text ">
+                                EBA
+                            </td>
+                            <td class="list-col-index-2 list-col-name-category list-col-type-text ">
+
+                            </td>
+                            <td class="list-col-index-3 list-col-name-menu-price list-col-type-currency ">
+                                £11.99
+                            </td>
+                            <td class="list-col-index-4 list-col-name-stock-qty list-col-type-number ">
+                                0
+                            </td>
+                            <td class="list-col-index-5 list-col-name-special-status list-col-type-switch ">
+                                --
+                            </td>
+                            <td class="list-col-index-6 list-col-name-menu-status list-col-type-switch ">
+                                Enabled
+                            </td>
+
+                            <td class="list-setup">&nbsp;</td>
+
+                            <td class="list-setup">&nbsp;</td>
+                        </tr>
+                        <tr>
+
+                            <td class="list-action">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-8" class="form-check-input" value="8" name="checked[]">
+                                    <label class="form-check-label" for="checkbox-8">&nbsp;</label>
+                                </div>
+                            </td>
+
+                            <td class="list-action ">
+                                <a class="btn btn-edit" href="https://tasty.wip/admin/menus/edit/8">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+
+                            </td>
+
+                            <td class="list-col-index-1 list-col-name-menu-name list-col-type-text ">
+                                Seafood Salad
+                            </td>
+                            <td class="list-col-index-2 list-col-name-category list-col-type-text ">
+
+                            </td>
+                            <td class="list-col-index-3 list-col-name-menu-price list-col-type-currency ">
+                                £5.99
+                            </td>
+                            <td class="list-col-index-4 list-col-name-stock-qty list-col-type-number ">
+                                0
+                            </td>
+                            <td class="list-col-index-5 list-col-name-special-status list-col-type-switch ">
+                                --
+                            </td>
+                            <td class="list-col-index-6 list-col-name-menu-status list-col-type-switch ">
+                                Enabled
+                            </td>
+
+                            <td class="list-setup">&nbsp;</td>
+
+                            <td class="list-setup">&nbsp;</td>
+                        </tr>
+                        <tr>
+
+                            <td class="list-action">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-7" class="form-check-input" value="7" name="checked[]">
+                                    <label class="form-check-label" for="checkbox-7">&nbsp;</label>
+                                </div>
+                            </td>
+
+                            <td class="list-action ">
+                                <a class="btn btn-edit" href="https://tasty.wip/admin/menus/edit/7">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+
+                            </td>
+
+                            <td class="list-col-index-1 list-col-name-menu-name list-col-type-text ">
+                                African Salad
+                            </td>
+                            <td class="list-col-index-2 list-col-name-category list-col-type-text ">
+
+                            </td>
+                            <td class="list-col-index-3 list-col-name-menu-price list-col-type-currency ">
+                                £8.99
+                            </td>
+                            <td class="list-col-index-4 list-col-name-stock-qty list-col-type-number ">
+                                0
+                            </td>
+                            <td class="list-col-index-5 list-col-name-special-status list-col-type-switch ">
+                                --
+                            </td>
+                            <td class="list-col-index-6 list-col-name-menu-status list-col-type-switch ">
+                                Enabled
+                            </td>
+
+                            <td class="list-setup">&nbsp;</td>
+
+                            <td class="list-setup">&nbsp;</td>
+                        </tr>
+                        <tr>
+
+                            <td class="list-action">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-6" class="form-check-input" value="6" name="checked[]">
+                                    <label class="form-check-label" for="checkbox-6">&nbsp;</label>
+                                </div>
+                            </td>
+
+                            <td class="list-action ">
+                                <a class="btn btn-edit" href="https://tasty.wip/admin/menus/edit/6">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+
+                            </td>
+
+                            <td class="list-col-index-1 list-col-name-menu-name list-col-type-text ">
+                                Whole catfish with rice and vegetables
+                            </td>
+                            <td class="list-col-index-2 list-col-name-category list-col-type-text ">
+
+                            </td>
+                            <td class="list-col-index-3 list-col-name-menu-price list-col-type-currency ">
+                                £13.99
+                            </td>
+                            <td class="list-col-index-4 list-col-name-stock-qty list-col-type-number ">
+                                0
+                            </td>
+                            <td class="list-col-index-5 list-col-name-special-status list-col-type-switch ">
+                                --
+                            </td>
+                            <td class="list-col-index-6 list-col-name-menu-status list-col-type-switch ">
+                                Enabled
+                            </td>
+
+                            <td class="list-setup">&nbsp;</td>
+
+                            <td class="list-setup">&nbsp;</td>
+                        </tr>
+                        <tr>
+
+                            <td class="list-action">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-5" class="form-check-input" value="5" name="checked[]">
+                                    <label class="form-check-label" for="checkbox-5">&nbsp;</label>
+                                </div>
+                            </td>
+
+                            <td class="list-action ">
+                                <a class="btn btn-edit" href="https://tasty.wip/admin/menus/edit/5">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+
+                            </td>
+
+                            <td class="list-col-index-1 list-col-name-menu-name list-col-type-text ">
+                                Special Shrimp Deluxe
+                            </td>
+                            <td class="list-col-index-2 list-col-name-category list-col-type-text ">
+
+                            </td>
+                            <td class="list-col-index-3 list-col-name-menu-price list-col-type-currency ">
+                                £12.99
+                            </td>
+                            <td class="list-col-index-4 list-col-name-stock-qty list-col-type-number ">
+                                0
+                            </td>
+                            <td class="list-col-index-5 list-col-name-special-status list-col-type-switch ">
+                                --
+                            </td>
+                            <td class="list-col-index-6 list-col-name-menu-status list-col-type-switch ">
+                                Enabled
+                            </td>
+
+                            <td class="list-setup">&nbsp;</td>
+
+                            <td class="list-setup">&nbsp;</td>
+                        </tr>
+                        <tr>
+
+                            <td class="list-action">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-4" class="form-check-input" value="4" name="checked[]">
+                                    <label class="form-check-label" for="checkbox-4">&nbsp;</label>
+                                </div>
+                            </td>
+
+                            <td class="list-action ">
+                                <a class="btn btn-edit" href="https://tasty.wip/admin/menus/edit/4">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+
+                            </td>
+
+                            <td class="list-col-index-1 list-col-name-menu-name list-col-type-text ">
+                                RICE AND DODO
+                            </td>
+                            <td class="list-col-index-2 list-col-name-category list-col-type-text ">
+
+                            </td>
+                            <td class="list-col-index-3 list-col-name-menu-price list-col-type-currency ">
+                                £11.99
+                            </td>
+                            <td class="list-col-index-4 list-col-name-stock-qty list-col-type-number ">
+                                0
+                            </td>
+                            <td class="list-col-index-5 list-col-name-special-status list-col-type-switch ">
+                                --
+                            </td>
+                            <td class="list-col-index-6 list-col-name-menu-status list-col-type-switch ">
+                                Enabled
+                            </td>
+
+                            <td class="list-setup">&nbsp;</td>
+
+                            <td class="list-setup">&nbsp;</td>
+                        </tr>
+                        <tr>
+
+                            <td class="list-action">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-3" class="form-check-input" value="3" name="checked[]">
+                                    <label class="form-check-label" for="checkbox-3">&nbsp;</label>
+                                </div>
+                            </td>
+
+                            <td class="list-action ">
+                                <a class="btn btn-edit" href="https://tasty.wip/admin/menus/edit/3">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+
+                            </td>
+
+                            <td class="list-col-index-1 list-col-name-menu-name list-col-type-text ">
+                                ATA RICE
+                            </td>
+                            <td class="list-col-index-2 list-col-name-category list-col-type-text ">
+
+                            </td>
+                            <td class="list-col-index-3 list-col-name-menu-price list-col-type-currency ">
+                                £12.00
+                            </td>
+                            <td class="list-col-index-4 list-col-name-stock-qty list-col-type-number ">
+                                0
+                            </td>
+                            <td class="list-col-index-5 list-col-name-special-status list-col-type-switch ">
+                                --
+                            </td>
+                            <td class="list-col-index-6 list-col-name-menu-status list-col-type-switch ">
+                                Enabled
+                            </td>
+
+                            <td class="list-setup">&nbsp;</td>
+
+                            <td class="list-setup">&nbsp;</td>
+                        </tr>
+                        <tr>
+
+                            <td class="list-action">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-2" class="form-check-input" value="2" name="checked[]">
+                                    <label class="form-check-label" for="checkbox-2">&nbsp;</label>
+                                </div>
+                            </td>
+
+                            <td class="list-action ">
+                                <a class="btn btn-edit" href="https://tasty.wip/admin/menus/edit/2">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+
+                            </td>
+
+                            <td class="list-col-index-1 list-col-name-menu-name list-col-type-text ">
+                                SCOTCH EGG
+                            </td>
+                            <td class="list-col-index-2 list-col-name-category list-col-type-text ">
+
+                            </td>
+                            <td class="list-col-index-3 list-col-name-menu-price list-col-type-currency ">
+                                £2.00
+                            </td>
+                            <td class="list-col-index-4 list-col-name-stock-qty list-col-type-number ">
+                                0
+                            </td>
+                            <td class="list-col-index-5 list-col-name-special-status list-col-type-switch ">
+                                --
+                            </td>
+                            <td class="list-col-index-6 list-col-name-menu-status list-col-type-switch ">
+                                Enabled
+                            </td>
+
+                            <td class="list-setup">&nbsp;</td>
+
+                            <td class="list-setup">&nbsp;</td>
+                        </tr>
+                        <tr>
+
+                            <td class="list-action">
+                                <div class="form-check">
+                                    <input type="checkbox" id="checkbox-1" class="form-check-input" value="1" name="checked[]">
+                                    <label class="form-check-label" for="checkbox-1">&nbsp;</label>
+                                </div>
+                            </td>
+
+                            <td class="list-action ">
+                                <a class="btn btn-edit" href="https://tasty.wip/admin/menus/edit/1">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+
+                            </td>
+
+                            <td class="list-col-index-1 list-col-name-menu-name list-col-type-text ">
+                                Puff-Puff
+                            </td>
+                            <td class="list-col-index-2 list-col-name-category list-col-type-text ">
+
+                            </td>
+                            <td class="list-col-index-3 list-col-name-menu-price list-col-type-currency ">
+                                £4.99
+                            </td>
+                            <td class="list-col-index-4 list-col-name-stock-qty list-col-type-number ">
+                                0
+                            </td>
+                            <td class="list-col-index-5 list-col-name-special-status list-col-type-switch ">
+                                --
+                            </td>
+                            <td class="list-col-index-6 list-col-name-menu-status list-col-type-switch ">
+                                Enabled
+                            </td>
+
+                            <td class="list-setup">&nbsp;</td>
+
+                            <td class="list-setup">&nbsp;</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </form>
+
+            <nav class="pagination-bar d-flex justify-content-end">
+                <div class="align-self-center">
+                    Showing 1-12 of 12 records
+                </div>
+                <div class="pl-3">
+
+                </div>
+            </nav>
+
+            <div class="modal fade" id="lists-setup-modal">
+                <div id="lists-setup-modal-content">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body text-muted text-center">
+                                <span class="ti-loading spinner-border fa-3x fa-fw"></span>
+                                <div class="fw-bold mt-2">Loading...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div id="notification">
+</div>
+<div class="modal fade" id="editStaffStatusModal" tabindex="-1" role="dialog" aria-labelledby="editStaffStatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Set a status</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <form method="POST" accept-charset="UTF-8" data-request="mainmenu::onSetUserStatus" data-request-success="jQuery('#editStaffStatusModal').modal('hide')">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <select class="form-select" name="status">
+                            <option value="1" selected="selected">Online</option>
+                            <option value="2">Back Soon</option>
+                            <option value="3">Away</option>
+                            <option value="4">Set a custom away status</option>
+                        </select>
+                    </div>
+                    <div class="form-group hide" data-trigger="[name='status']" data-trigger-action="show" data-trigger-condition="value[4]" data-trigger-closest-parent="form">
+                        <input type="text" class="form-control" name="message" placeholder="On my lunch break...">
+                    </div>
+                    <div class="form-group hide" data-trigger="[name='status']" data-trigger-action="show" data-trigger-condition="value[4]" data-trigger-closest-parent="form">
+                        <select class="form-select" name="clear_after" id="staffClearStatusAfter">
+                            <option value="1440">Clear tomorrow</option>
+                            <option value="240">Clear in 4 hours</option>
+                            <option value="30">Clear in 30 minutes</option>
+                            <option value="0" selected="selected">Don't Clear</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer text-right">
+                    <button type="button" class="btn btn-link" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&nbsp;&nbsp;Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script charset="utf-8" type="text/javascript" src="html_files/c293943e4226767c80a1202f36b68074-1653222498.js"></script>
+
+<div class="bar-loading-indicator loaded">
+    <div class="bar">
+        <div class="peg"></div>
+    </div>
+    <div class="bar-loaded"></div>
+</div>
+</body>
+</html>

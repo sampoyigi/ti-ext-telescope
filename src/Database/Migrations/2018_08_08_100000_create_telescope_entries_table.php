@@ -46,7 +46,7 @@ return new class extends Migration {
             $table->uuid('uuid');
             $table->uuid('batch_id');
             $table->string('family_hash')->nullable();
-            $table->boolean('should_display_on_index')->default(TRUE);
+            $table->boolean('should_display_on_index')->default(true);
             $table->string('type', 20);
             $table->longText('content');
             $table->dateTime('created_at')->nullable();

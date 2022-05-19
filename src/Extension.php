@@ -2,10 +2,10 @@
 
 namespace SamPoyigi\Telescope;
 
-use Admin\Facades\AdminAuth;
+use Igniter\Admin\Facades\AdminAuth;
+use Igniter\System\Classes\BaseExtension;
 use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
-use System\Classes\BaseExtension;
 
 /**
  * Telescope Extension Information File
@@ -28,7 +28,7 @@ class Extension extends BaseExtension
 
         Telescope::filter(function (IncomingEntry $entry) {
             if ($this->app->environment('local'))
-                return TRUE;
+                return true;
 
             return $entry->isReportableException() ||
                 $entry->isFailedRequest() ||
@@ -113,7 +113,7 @@ class Extension extends BaseExtension
     {
         Telescope::auth(function ($request) {
             if (!AdminAuth::check())
-                return FALSE;
+                return false;
 
             return AdminAuth::getUser()->hasPermission('SamPoyigi.Telescope.Access');
         });
