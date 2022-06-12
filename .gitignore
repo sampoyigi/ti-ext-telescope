@@ -9,3 +9,5 @@ phpunit.xml
 psalm.xml
 /vendor
 .php-cs-fixer.cache
+html.html
+html_files
