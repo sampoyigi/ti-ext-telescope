@@ -1,8 +1,8 @@
 Integrates the [Laravel Telescope](https://github.com/laravel/telescope) package into TastyIgniter.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/sampoyigi/ttelescope.svg?style=flat-square)](https://packagist.org/packages/sampoyigi/ttelescope)
-[![Tests](https://github.com/sampoyigi/ttelescope/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/sampoyigi/ttelescope/actions/workflows/run-tests.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/sampoyigi/ttelescope.svg?style=flat-square)](https://packagist.org/packages/sampoyigi/ttelescope)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/sampoyigi/ti-ext-telescope.svg?style=flat-square)](https://packagist.org/packages/sampoyigi/ti-ext-telescope)
+[![Tests](https://github.com/sampoyigi/ti-ext-telescope/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/sampoyigi/ti-ext-telescope/actions/workflows/run-tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/sampoyigi/ti-ext-telescope.svg?style=flat-square)](https://packagist.org/packages/sampoyigi/ti-ext-telescope)
 
 ### Installation
 
