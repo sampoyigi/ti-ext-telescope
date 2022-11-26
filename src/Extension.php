@@ -15,7 +15,7 @@ class Extension extends BaseExtension
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/config/telescope.php', 'telescope'
+            __DIR__.'/../config/telescope.php', 'telescope'
         );
 
 //        app()->register(\Illuminate\Auth\AuthServiceProvider::class);
