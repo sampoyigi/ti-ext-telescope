@@ -1,6 +1,6 @@
 {
   "name": "sampoyigi/ti-ext-telescope",
-  "type": "tastyigniter-extension",
+  "type": "tastyigniter-package",
   "description": "Laravel Telescope integration for TastyIgniter",
   "homepage": "https://github.com/sampoyigi/ti-ext-telescope",
   "keywords": [
