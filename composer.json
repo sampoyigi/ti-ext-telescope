@@ -17,7 +17,6 @@
     }
   ],
   "require": {
-    "tastyigniter/flame": "v4.x-dev",
     "laravel/telescope": "~v4.8"
   },
   "autoload": {
