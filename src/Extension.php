@@ -2,8 +2,8 @@
 
 namespace SamPoyigi\Telescope;
 
-use Igniter\Admin\Facades\AdminAuth;
 use Igniter\System\Classes\BaseExtension;
+use Igniter\User\Facades\AdminAuth;
 use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
 
@@ -70,7 +70,7 @@ class Extension extends BaseExtension
                     'telescope' => [
                         'title' => 'Telescope',
                         'class' => 'telescope',
-                        'href' => admin_url('sampoyigi/telescope/dashboard'),
+                        'href' => url(config('telescope.path')),
                         'priority' => 500,
                         'permissions' => ['SamPoyigi.Telescope.Access'],
                     ],
