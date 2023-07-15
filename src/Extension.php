@@ -73,6 +73,7 @@ class Extension extends BaseExtension
                         'href' => url(config('telescope.path')),
                         'priority' => 500,
                         'permissions' => ['SamPoyigi.Telescope.Access'],
+                        'target' => '_blank',
                     ],
                 ],
             ],
