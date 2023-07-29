@@ -51,7 +51,7 @@ class Extension extends BaseExtension
     {
         return [
             'SamPoyigi.Telescope.Access' => [
-                'tab' => 'Telescope',
+                'group' => 'advanced',
                 'label' => 'Access to the Telescope dashboard',
             ],
         ];
