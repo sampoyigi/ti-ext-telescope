@@ -37,7 +37,7 @@ class Extension extends BaseExtension
         $this->authorization();
     }
 
-    public function registerSchedule($schedule): void
+    public function registerSchedule(string $schedule): void
     {
         $schedule->command('telescope:prune')->daily();
     }
