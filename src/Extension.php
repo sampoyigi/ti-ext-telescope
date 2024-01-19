@@ -4,6 +4,7 @@ namespace SamPoyigi\Telescope;
 
 use Igniter\System\Classes\BaseExtension;
 use Igniter\User\Facades\AdminAuth;
+use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
 
@@ -37,7 +38,7 @@ class Extension extends BaseExtension
         $this->authorization();
     }
 
-    public function registerSchedule(string $schedule): void
+    public function registerSchedule(Schedule $schedule): void
     {
         $schedule->command('telescope:prune')->daily();
     }
