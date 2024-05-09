@@ -52,7 +52,7 @@ class Extension extends BaseExtension
     {
         return [
             'SamPoyigi.Telescope.Access' => [
-                'group' => 'advanced',
+                'group' => 'igniter::system.permissions.name',
                 'label' => 'Access to the Telescope dashboard',
             ],
         ];
