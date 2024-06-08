@@ -1,39 +1,39 @@
 {
-    "name": "sampoyigi/ti-ext-telescope",
-    "type": "tastyigniter-package",
-    "description": "Laravel Telescope integration for TastyIgniter",
-    "homepage": "https://github.com/sampoyigi/ti-ext-telescope",
-    "keywords": [
-        "tastyigniter",
-        "laravel",
-        "telescope",
-        "php"
-    ],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Sam Poyigi",
-            "email": "sam@sampoyigi.com"
-        }
-    ],
-    "require": {
-        "laravel/telescope": "~v4.8",
-        "tastyigniter/core": "dev-master"
-    },
-    "autoload": {
-        "psr-4": {
-            "SamPoyigi\\Telescope\\": "src/"
-        }
-    },
-    "extra": {
-        "tastyigniter-extension": {
-            "code": "sampoyigi.telescope",
-            "name": "Laravel Telescope",
-            "icon": {
-                "image": "icon.svg",
-                "backgroundColor": "#edf1f3",
-                "color": "#362d59"
-            }
-        }
+  "name": "sampoyigi/ti-ext-telescope",
+  "type": "tastyigniter-package",
+  "description": "Laravel Telescope integration for TastyIgniter",
+  "homepage": "https://github.com/sampoyigi/ti-ext-telescope",
+  "keywords": [
+    "tastyigniter",
+    "laravel",
+    "telescope",
+    "php"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sam Poyigi",
+      "email": "sam@sampoyigi.com"
     }
+  ],
+  "require": {
+    "laravel/telescope": "^5.0",
+    "tastyigniter/core": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "SamPoyigi\\Telescope\\": "src/"
+    }
+  },
+  "extra": {
+    "tastyigniter-extension": {
+      "code": "sampoyigi.telescope",
+      "name": "Laravel Telescope",
+      "icon": {
+        "image": "icon.svg",
+        "backgroundColor": "#edf1f3",
+        "color": "#362d59"
+      }
+    }
+  }
 }
