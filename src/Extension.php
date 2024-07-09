@@ -21,7 +21,7 @@ class Extension extends BaseExtension
 
         $this->hideSensitiveRequestDetails();
 
-        Telescope::filter(function (IncomingEntry $entry) {
+        Telescope::filter(function(IncomingEntry $entry) {
             if ($this->app->environment('local'))
                 return true;
 
@@ -107,7 +107,7 @@ class Extension extends BaseExtension
      */
     protected function authorization()
     {
-        Telescope::auth(function ($request) {
+        Telescope::auth(function($request) {
             if (!AdminAuth::check())
                 return false;
 
