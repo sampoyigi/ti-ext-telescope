@@ -18,7 +18,7 @@
   ],
   "require": {
     "laravel/telescope": "^5.0",
-    "tastyigniter/core": "dev-master"
+    "tastyigniter/core": "^v4.0@beta"
   },
   "require-dev": {
     "laravel/pint": "^1.2",
