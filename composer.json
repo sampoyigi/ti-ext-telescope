@@ -1,7 +1,7 @@
 {
   "name": "sampoyigi/ti-ext-telescope",
   "type": "tastyigniter-package",
-  "description": "Laravel Telescope integration for TastyIgniter",
+  "description": "Laravel Telescope integration for TastyIgniter, monitor and debug your application",
   "homepage": "https://github.com/sampoyigi/ti-ext-telescope",
   "keywords": [
     "tastyigniter",
@@ -20,20 +20,47 @@
     "laravel/telescope": "^5.0",
     "tastyigniter/core": "dev-master"
   },
+  "require-dev": {
+    "laravel/pint": "^1.2",
+    "larastan/larastan": "^2.4.0",
+    "sampoyigi/testbench": "dev-main as 1.0",
+    "pestphp/pest-plugin-laravel": "^2.0"
+  },
   "autoload": {
     "psr-4": {
       "SamPoyigi\\Telescope\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "SamPoyigi\\Telescope\\Tests\\": "tests/"
+    }
+  },
   "extra": {
     "tastyigniter-extension": {
       "code": "sampoyigi.telescope",
-      "name": "Laravel Telescope",
+      "name": "Laravel Telescope for TastyIgniter",
       "icon": {
         "image": "icon.svg",
         "backgroundColor": "#edf1f3",
         "color": "#362d59"
       }
     }
-  }
+  },
+  "scripts": {
+    "test": "vendor/bin/pest",
+    "test-coverage": "vendor/bin/pest --coverage",
+    "format": "vendor/bin/pint",
+    "static": "vendor/bin/phpstan analyse --ansi --memory-limit 1056M"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true,
+      "php-http/discovery": true,
+      "composer/installers": true
+    },
+    "sort-packages": true
+  },
+  "minimum-stability": "beta",
+  "prefer-stable": true
 }
