@@ -1,34 +1,34 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SamPoyigi\Telescope;
 
-use Admin\Facades\AdminAuth;
+use Igniter\System\Classes\BaseExtension;
+use Igniter\User\Facades\AdminAuth;
+use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
-use System\Classes\BaseExtension;
+use Override;
 
 /**
  * Telescope Extension Information File
  */
 class Extension extends BaseExtension
 {
-    public function register()
+    #[Override]
+    public function register(): void
     {
         $this->mergeConfigFrom(
-            __DIR__.'/config/telescope.php', 'telescope'
+            __DIR__.'/../config/telescope.php', 'telescope'
         );
-
-//        app()->register(\Illuminate\Auth\AuthServiceProvider::class);
-
-        $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
-
-        Telescope::ignoreMigrations();
 
         $this->hideSensitiveRequestDetails();
 
-        Telescope::filter(function (IncomingEntry $entry) {
-            if ($this->app->environment('local'))
-                return TRUE;
+        Telescope::filter(function(IncomingEntry $entry): bool {
+            if ($this->app->environment('local')) {
+                return true;
+            }
 
             return $entry->isReportableException() ||
                 $entry->isFailedRequest() ||
@@ -38,26 +38,26 @@ class Extension extends BaseExtension
         });
     }
 
-    public function boot()
+    #[Override]
+    public function boot(): void
     {
         $this->authorization();
     }
 
-    public function registerSchedule($schedule): void
+    public function registerSchedule(Schedule $schedule): void
     {
         $schedule->command('telescope:prune')->daily();
     }
 
     /**
      * Registers any back-end permissions used by this plugin.
-     *
-     * @return array
      */
+    #[Override]
     public function registerPermissions(): array
     {
         return [
             'SamPoyigi.Telescope.Access' => [
-                'tab' => 'Telescope',
+                'group' => 'igniter::system.permissions.name',
                 'label' => 'Access to the Telescope dashboard',
             ],
         ];
@@ -65,9 +65,8 @@ class Extension extends BaseExtension
 
     /**
      * Registers back-end navigation items for this plugin.
-     *
-     * @return array
      */
+    #[Override]
     public function registerNavigation(): array
     {
         return [
@@ -76,9 +75,10 @@ class Extension extends BaseExtension
                     'telescope' => [
                         'title' => 'Telescope',
                         'class' => 'telescope',
-                        'href' => admin_url('sampoyigi/telescope/dashboard'),
+                        'href' => url(config('telescope.path')),
                         'priority' => 500,
                         'permissions' => ['SamPoyigi.Telescope.Access'],
+                        'target' => '_blank',
                     ],
                 ],
             ],
@@ -92,8 +92,9 @@ class Extension extends BaseExtension
      */
     protected function hideSensitiveRequestDetails()
     {
-        if ($this->app->environment('local'))
+        if ($this->app->environment('local')) {
             return;
+        }
 
         Telescope::hideRequestParameters(['_token']);
 
@@ -111,9 +112,10 @@ class Extension extends BaseExtension
      */
     protected function authorization()
     {
-        Telescope::auth(function ($request) {
-            if (!AdminAuth::check())
-                return FALSE;
+        Telescope::auth(function($request) {
+            if (!AdminAuth::check()) {
+                return false;
+            }
 
             return AdminAuth::getUser()->hasPermission('SamPoyigi.Telescope.Access');
         });

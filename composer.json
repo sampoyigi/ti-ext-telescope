@@ -1,33 +1,77 @@
 {
-  "name": "sampoyigi/ti-ext-telescope",
-  "type": "tastyigniter-extension",
-  "description": "Laravel Telescope integration for TastyIgniter",
-  "homepage": "https://github.com/sampoyigi/ti-ext-telescope",
-  "keywords": [
-    "tastyigniter",
-    "laravel",
-    "telescope",
-    "php"
-  ],
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Sam Poyigi",
-      "email": "sam@sampoyigi.com"
-    }
-  ],
-  "require": {
-    "laravel/telescope": "~v4.8"
-  },
-  "extra": {
-    "tastyigniter-extension": {
-      "code": "sampoyigi.telescope",
-      "name": "Laravel Telescope",
-      "icon": {
-        "image": "icon.svg",
-        "backgroundColor": "#edf1f3",
-        "color": "#362d59"
-      }
-    }
-  }
+    "name": "sampoyigi/ti-ext-telescope",
+    "type": "tastyigniter-package",
+    "description": "Laravel Telescope integration for TastyIgniter, monitor and debug your application",
+    "homepage": "https://github.com/sampoyigi/ti-ext-telescope",
+    "keywords": [
+        "tastyigniter",
+        "laravel",
+        "telescope",
+        "php"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sam Poyigi",
+            "email": "sam@sampoyigi.com"
+        }
+    ],
+    "require": {
+        "laravel/telescope": "^5.0",
+        "tastyigniter/core": "^v4.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.2",
+        "larastan/larastan": "^3.0",
+        "rector/rector": "^2.0",
+        "sampoyigi/testbench": "^1.0",
+        "pestphp/pest-plugin-laravel": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SamPoyigi\\Telescope\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SamPoyigi\\Telescope\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "tastyigniter-extension": {
+            "code": "sampoyigi.telescope",
+            "name": "Laravel Telescope for TastyIgniter",
+            "icon": {
+                "image": "icon.svg",
+                "backgroundColor": "#edf1f3",
+                "color": "#362d59"
+            }
+        }
+    },
+    "scripts": {
+        "test:lint": "vendor/bin/pint --test --ansi",
+        "test:lint-fix": "vendor/bin/pint --ansi",
+        "test:refactor": "vendor/bin/rector process --dry-run --ansi",
+        "test:refactor-fix": "vendor/bin/rector process --ansi",
+        "test:static": "vendor/bin/phpstan analyse --memory-limit=1056M --ansi",
+        "test:static-fix": "vendor/bin/phpstan --generate-baseline --memory-limit=1056M --ansi",
+        "test:pest": "vendor/bin/pest",
+        "test:coverage": "vendor/bin/pest --coverage --exactly=100 --compact",
+        "test:type-coverage": "vendor/bin/pest --type-coverage --min=100",
+        "test": [
+            "@test:lint",
+            "@test:refactor",
+            "@test:static"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true,
+            "composer/installers": true
+        },
+        "sort-packages": true
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true
 }
