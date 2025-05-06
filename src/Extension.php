@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SamPoyigi\Telescope;
 
 use Igniter\System\Classes\BaseExtension;
@@ -7,13 +9,15 @@ use Igniter\User\Facades\AdminAuth;
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
+use Override;
 
 /**
  * Telescope Extension Information File
  */
 class Extension extends BaseExtension
 {
-    public function register()
+    #[Override]
+    public function register(): void
     {
         $this->mergeConfigFrom(
             __DIR__.'/../config/telescope.php', 'telescope'
@@ -21,9 +25,10 @@ class Extension extends BaseExtension
 
         $this->hideSensitiveRequestDetails();
 
-        Telescope::filter(function(IncomingEntry $entry) {
-            if ($this->app->environment('local'))
+        Telescope::filter(function(IncomingEntry $entry): bool {
+            if ($this->app->environment('local')) {
                 return true;
+            }
 
             return $entry->isReportableException() ||
                 $entry->isFailedRequest() ||
@@ -33,7 +38,8 @@ class Extension extends BaseExtension
         });
     }
 
-    public function boot()
+    #[Override]
+    public function boot(): void
     {
         $this->authorization();
     }
@@ -45,9 +51,8 @@ class Extension extends BaseExtension
 
     /**
      * Registers any back-end permissions used by this plugin.
-     *
-     * @return array
      */
+    #[Override]
     public function registerPermissions(): array
     {
         return [
@@ -60,9 +65,8 @@ class Extension extends BaseExtension
 
     /**
      * Registers back-end navigation items for this plugin.
-     *
-     * @return array
      */
+    #[Override]
     public function registerNavigation(): array
     {
         return [
@@ -88,8 +92,9 @@ class Extension extends BaseExtension
      */
     protected function hideSensitiveRequestDetails()
     {
-        if ($this->app->environment('local'))
+        if ($this->app->environment('local')) {
             return;
+        }
 
         Telescope::hideRequestParameters(['_token']);
 
@@ -108,8 +113,9 @@ class Extension extends BaseExtension
     protected function authorization()
     {
         Telescope::auth(function($request) {
-            if (!AdminAuth::check())
+            if (!AdminAuth::check()) {
                 return false;
+            }
 
             return AdminAuth::getUser()->hasPermission('SamPoyigi.Telescope.Access');
         });
