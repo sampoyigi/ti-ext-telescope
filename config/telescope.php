@@ -161,7 +161,7 @@ return [
 
         Watchers\QueryWatcher::class => [
             'enabled' => env('TELESCOPE_QUERY_WATCHER', true),
-            'ignore_packages' => true,
+            'ignore_packages' => false,
             'slow' => 100,
         ],
 

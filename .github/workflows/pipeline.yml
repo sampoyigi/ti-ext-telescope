@@ -14,6 +14,5 @@ jobs:
   auto-merge-release:
     needs: [ php-tests ]
     uses: tastyigniter/workflows/.github/workflows/auto-merge-release.yml@main
-    permissions:
-      contents: write
-      pull-requests: write
+    secrets:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
