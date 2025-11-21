@@ -62,7 +62,7 @@
             "@test:refactor",
             "@test:static",
             "@test:lint",
-            "@test:coverage"
+            "@test:pest"
         ]
     },
     "config": {
